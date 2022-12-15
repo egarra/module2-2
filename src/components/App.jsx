@@ -1,16 +1,25 @@
+
+
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
+import { PhotoGallary } from 'Tabs/PhotoGallary/PhotoGallary';
+import { Todos } from 'Tabs/Todos/Todos';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Tabs>
+    <TabList>
+      <Tab>Gallary</Tab>
+      <Tab>Todos</Tab>
+    </TabList>
+
+    <TabPanel>
+      <PhotoGallary />
+    </TabPanel>
+    <TabPanel>
+      <Todos/>
+    </TabPanel>
+  </Tabs>
   );
 };
