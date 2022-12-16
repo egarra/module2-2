@@ -1,10 +1,13 @@
 import { Component } from 'react';
+import photoJson from '../../data/photos';
+import { GalleryList } from '../../components/GalleryList/GalleryList'
 
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
 export class PhotoGallary extends Component {
   state = {
     query: '',
+    images: photoJson,
   };
 
   onFormSubmit = query => {
@@ -13,6 +16,12 @@ export class PhotoGallary extends Component {
   };
 
   render() {
-    return <SearchForm onFormSubmit={this.onFormSubmit} btnText="Search" />;
+    console.log(this.state.images);
+    return (
+      <>
+        <SearchForm onFormSubmit={this.onFormSubmit} btnText="Search" />;
+        <GalleryList list={this.state.images} />
+      </>
+    );
   }
 }

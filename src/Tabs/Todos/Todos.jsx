@@ -10,6 +10,11 @@ export class Todos extends Component {
   };
 
   onFormSubmit = text => {
+    const isAtList = this.state.todos.find((todo) => todo.text === text)
+    if (isAtList) {
+      alert('already in list')
+      return;
+    }
     const todo = {
       text,
       id: nanoid(),
