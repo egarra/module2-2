@@ -1,7 +1,11 @@
-export const GalleryListItem = ({previewURL}) => {
-    return (
-        <li>
-            <img src={previewURL}/>
-        </li>
-    )
-}
+export const GalleryListItem = ({
+  previewURL,
+  onImageClick,
+  largeImageURL,
+}) => {
+  return (
+    <li onClick={() => onImageClick(largeImageURL)}>
+      <img src={previewURL} />
+    </li>
+  );
+};
