@@ -1,8 +1,7 @@
 
-
+import {Counter} from 'Tabs/Counter/Counter'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-
 import { PhotoGallary } from 'Tabs/PhotoGallary/PhotoGallary';
 import { Todos } from 'Tabs/Todos/Todos';
 
@@ -11,7 +10,8 @@ export const App = () => {
     <Tabs>
     <TabList>
       <Tab>Gallary</Tab>
-      <Tab>Todos</Tab>
+        <Tab>Todos</Tab>
+        <Tab>Counter</Tab>
     </TabList>
 
     <TabPanel>
@@ -19,6 +19,9 @@ export const App = () => {
     </TabPanel>
     <TabPanel>
       <Todos/>
+      </TabPanel>
+      <TabPanel>
+      <Counter/>
     </TabPanel>
   </Tabs>
   );
