@@ -9,8 +9,8 @@ export class FriendsForm extends Component {
   };
 
   inputChange = event => {
-    const {name, value, checked} = event.target
-    this.setState({ [name]: value === 'on' ? checked : value});
+    const { name, value, checked } = event.target;
+    this.setState({ [name]: value === 'on' ? checked : value });
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -21,10 +21,13 @@ export class FriendsForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input name='name' placeholder='Name' onChange={this.inputChange} />
-        <input name='email' placeholder='Email' onChange={this.inputChange} />
-        <input name='phone' placeholder='Phone' onChange={this.inputChange} />
-        <label>IsOnline<input name='online' type='checkbox' onChange={this.inputChange}/></label>
+        <input name="name" placeholder="Name" onChange={this.inputChange} />
+        <input name="email" placeholder="Email" onChange={this.inputChange} />
+        <input name="phone" placeholder="Phone" onChange={this.inputChange} />
+        <label>
+          IsOnline
+          <input name="online" type="checkbox" onChange={this.inputChange} />
+        </label>
         <button type="submit"> Save </button>
       </form>
     );
