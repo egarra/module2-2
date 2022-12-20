@@ -22,7 +22,6 @@ export class PhotoGallary extends Component {
   };
 
   render() {
-    console.log(this.state.images);
     return (
       <>
         <SearchForm onFormSubmit={this.onFormSubmit} btnText="Search" />;

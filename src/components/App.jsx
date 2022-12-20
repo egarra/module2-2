@@ -1,4 +1,4 @@
-
+import { Friends } from 'Tabs/Friends/Friends';
 import {Counter} from 'Tabs/Counter/Counter'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -12,6 +12,7 @@ export const App = () => {
       <Tab>Gallary</Tab>
         <Tab>Todos</Tab>
         <Tab>Counter</Tab>
+        <Tab>Friends</Tab>
     </TabList>
 
     <TabPanel>
@@ -22,6 +23,9 @@ export const App = () => {
       </TabPanel>
       <TabPanel>
       <Counter/>
+      </TabPanel>
+      <TabPanel>
+      <Friends/>
     </TabPanel>
   </Tabs>
   );
