@@ -3,13 +3,14 @@ import { ListImages } from './GalleryList.styled';
 export const GalleryList = ({ list, onImageClick }) => {
   return (
     <ListImages>
-      {list.map(({ previewURL, largeImageURL }) => {
+      {list.map(({ id, alt, src }) => {
         return (
           <GalleryListItem
-            key={previewURL}
-            previewURL={previewURL}
+            key={id}
+            previewURL={src.large}
             onImageClick={onImageClick}
-            largeImageURL={largeImageURL}
+            largeImageURL={src.landscape}
+            alt={alt}
           />
         );
       })}
