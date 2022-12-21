@@ -1,4 +1,5 @@
-import { Backdrop, Modal, ImageComp } from './Modal.styled';
+import { Modal, ImageComp } from './Modal.styled';
+import { Backdrop } from 'components/Backdrop/Backdrop.styled';
 
 export const ModalWindow = ({ largeImgUrl, onImageClick }) => {
   const handleBackdrop = event => {
