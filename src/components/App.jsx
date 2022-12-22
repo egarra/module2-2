@@ -1,32 +1,37 @@
 import { Friends } from 'Tabs/Friends/Friends';
-import {Counter} from 'Tabs/Counter/Counter'
+import { Counter } from 'Tabs/Counter/Counter';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { PhotoGallary } from 'Tabs/PhotoGallary/PhotoGallary';
 import { Todos } from 'Tabs/Todos/Todos';
+import { Movies } from 'Tabs/Movies/Movies';
 
 export const App = () => {
   return (
     <Tabs>
-    <TabList>
-      <Tab>Gallary</Tab>
+      <TabList>
+        <Tab>Gallary</Tab>
         <Tab>Todos</Tab>
         <Tab>Counter</Tab>
         <Tab>Friends</Tab>
-    </TabList>
+        <Tab>Movies</Tab>
+      </TabList>
 
-    <TabPanel>
-      <PhotoGallary />
-    </TabPanel>
-    <TabPanel>
-      <Todos/>
+      <TabPanel>
+        <PhotoGallary />
       </TabPanel>
       <TabPanel>
-      <Counter/>
+        <Todos />
       </TabPanel>
       <TabPanel>
-      <Friends/>
-    </TabPanel>
-  </Tabs>
+        <Counter />
+      </TabPanel>
+      <TabPanel>
+        <Friends />
+      </TabPanel>
+      <TabPanel>
+        <Movies />
+      </TabPanel>
+    </Tabs>
   );
 };
