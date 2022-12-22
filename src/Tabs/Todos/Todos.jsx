@@ -9,10 +9,25 @@ export class Todos extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+
+    if (todos) {
+      const parsedTodos = JSON.parse(todos);
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.todos !== prevState.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
+
   onFormSubmit = text => {
-    const isAtList = this.state.todos.find((todo) => todo.text === text)
+    const isAtList = this.state.todos.find(todo => todo.text === text);
     if (isAtList) {
-      alert('already in list')
+      alert('already in list');
       return;
     }
     const todo = {
@@ -28,20 +43,20 @@ export class Todos extends Component {
   };
   onInputChange = filter => {
     this.setState({
-      filter 
-    })
+      filter,
+    });
   };
-  filteredToDos = () => { 
+  filteredToDos = () => {
     const { todos, filter } = this.state;
     return todos.filter(todo => todo.text.includes(filter));
-  }
+  };
   render() {
     const filteredToDos = this.filteredToDos();
     return (
       <>
         <SearchForm onFormSubmit={this.onFormSubmit} btnText="Create" />
         <p>Enter your search value</p>
-        <Filter onInputChange={this.onInputChange } />
+        <Filter onInputChange={this.onInputChange} />
         <ToDoList data={filteredToDos} deleteToDo={this.deleteToDo} />
       </>
     );
