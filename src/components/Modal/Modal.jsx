@@ -1,5 +1,6 @@
 import { Modal, ImageComp } from './Modal.styled';
 import { Backdrop } from 'components/Backdrop/Backdrop.styled';
+import { Clock } from 'components/Clock/Clock';
 
 export const ModalWindow = ({ largeImgUrl, onImageClick }) => {
   const handleBackdrop = event => {
@@ -15,6 +16,7 @@ export const ModalWindow = ({ largeImgUrl, onImageClick }) => {
         <button type="button" onClick={() => onImageClick('')}>
           Close
         </button>
+        <Clock />
       </Modal>
     </Backdrop>
   );
