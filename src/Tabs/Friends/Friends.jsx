@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FriendsForm } from 'components/FriendsForm/FriendsForm';
 import { nanoid } from 'nanoid';
 import { FriendList } from 'components/FriendList/FriendList';
 export const Friends = () => {
-  const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState(
+    () => JSON.parse(localStorage.getItem('friend')) || []
+  );
+  useEffect(() => {
+    localStorage.setItem('friend', JSON.stringify(friends));
+  }, [friends]);
+
   const onFormSubmit = friend => {
     const isExist = friends.find(item => {
       return item.name === friend.name;
