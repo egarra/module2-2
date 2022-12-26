@@ -1,38 +1,35 @@
 import { CounterList } from "components/CounterList/CounterList"
-import { Component } from "react"
+import { useState } from "react"
 
-export class Counter extends Component {
-    state= {
-        totalVotes: 0,
-        points: 0,
-        marks: {
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5
-        }
+export const Counter = () => {
+
+    const [totalVotes, setTotalVotes] = useState(0);
+    const [points, setPoints] = useState(0);
+
+    const marks = {
+        one: 1,
+        two: 2,
+        three: 3,
+        four: 4,
+        five: 5
     }
-    onBtnClick = (value) => {
-        this.setState((prevState) => ({
-                totalVotes: prevState.totalVotes + 1,
-                points: prevState.points + value
-        }))
+
+  const onBtnClick = (value) => {
+        setTotalVotes(state => state + 1)
+        setPoints(state => state + value)
     }
-    averageMark = () => {
-        const average = this.state.points / this.state.totalVotes
+  const averageMark = () => {
+        const average = points / totalVotes
         return average? average.toFixed(2) : null;
     }
-    render() {
-        const average = this.averageMark();
-        const {points, totalVotes, marks} = this.state
+        const average = averageMark();
         return (
             <>
                 <p>{points} points</p>
                 <p>{totalVotes} votes</p>
                 {average && <p>{ average}</p>}
-                <CounterList marks={Object.entries(marks) } onLeaveFeadback={this.onBtnClick} />
+                <CounterList marks={Object.entries(marks) } onLeaveFeadback={onBtnClick} />
             </>
         )
-}
+
 }
