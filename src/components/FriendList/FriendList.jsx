@@ -1,3 +1,5 @@
+import css from './FriendList.module.css';
+
 export const FriendList = ({ friends, deleteFriend }) => {
   return (
     <ul>
@@ -5,11 +7,12 @@ export const FriendList = ({ friends, deleteFriend }) => {
         const mailTo = 'mailto:' + email;
         const tel = 'tel' + phone;
         return (
-          <li key={name}>
+          <li className={css.item} key={name}>
             <h3>{name}</h3>
             <a href={mailTo}>{email}</a>
             <a href={tel}>{phone}</a>
             <span
+              className={css.circle}
               style={{
                 backgroundColor: online ? 'green' : 'red',
                 width: 10,
