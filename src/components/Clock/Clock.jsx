@@ -1,23 +1,15 @@
-import { Component } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export class Clock extends Component {
-  state = {
-    time: new Date().toLocaleTimeString(),
-  };
-
-  intervalId = null;
-
-  componentDidMount() {
-    this.intervalId = setInterval(() => {
-      this.setState({ time: new Date().toLocaleTimeString() });
+export const Clock = () => {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const intervalId = useRef(null);
+  
+  useEffect(() => {
+    intervalId.current = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
     }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
-
-  render() {
-    return <p>{this.state.time}</p>;
-  }
+    return () => clearInterval(intervalId.current);
+  }, []);
+  return <p>{time}</p>;
 }
+

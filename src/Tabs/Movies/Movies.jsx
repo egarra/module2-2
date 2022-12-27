@@ -15,6 +15,7 @@ export const Movies = () => {
   }, []);
 
   useEffect(() => {
+    if(!query) return
     getMovieByQuery(query).then(({ results }) => {
       setMovies(results);
     });
@@ -26,7 +27,7 @@ export const Movies = () => {
   return (
     <>
       <Clock />
-      <SearchForm onFormSubmit={onFormSubmit} />
+      <SearchForm onFormSubmit={onFormSubmit} btnText='Search'/>
       <MovieList movies={movies} />
     </>
   );

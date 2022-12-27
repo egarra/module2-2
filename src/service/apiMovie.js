@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-axios.defaults.params = {
-  api_key: '5ba51c2da469b356ab2a1378773a169b',
-};
+const instanceMovie = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  params: {
+    api_key: '5ba51c2da469b356ab2a1378773a169b',
+  }
+});
 
 export const getTrendingMovie = async () => {
-  const { data } = await axios.get('/trending/all/day', {
+  const {
+    data
+  } = await instanceMovie.get('/trending/all/day', {
     params: {
       page: 1,
     },
@@ -15,7 +19,9 @@ export const getTrendingMovie = async () => {
 };
 
 export const getMovieByQuery = async query => {
-  const { data } = await axios.get('/search/movie', {
+  const {
+    data
+  } = await instanceMovie.get('/search/movie', {
     params: {
       query,
     },
