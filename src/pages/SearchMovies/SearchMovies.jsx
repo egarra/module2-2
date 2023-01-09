@@ -1,21 +1,15 @@
 import { useEffect, useState } from 'react';
-import { getTrendingMovie, getMovieByQuery } from 'service/apiMovie';
+import { getMovieByQuery } from 'service/apiMovie';
 import { MovieList } from 'components/MovieList/MovieList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { Clock } from 'components/Clock/Clock';
 
-export const Movies = () => {
+export const SearchMovies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    getTrendingMovie().then(({ results }) => {
-      setMovies(results);
-    });
-  }, []);
-
-  useEffect(() => {
-    if(!query) return
+    if (!query) return;
     getMovieByQuery(query).then(({ results }) => {
       setMovies(results);
     });
@@ -27,7 +21,7 @@ export const Movies = () => {
   return (
     <>
       <Clock />
-      <SearchForm onFormSubmit={onFormSubmit} btnText='Search'/>
+      <SearchForm onFormSubmit={onFormSubmit} btnText="Search" />
       <MovieList movies={movies} />
     </>
   );
