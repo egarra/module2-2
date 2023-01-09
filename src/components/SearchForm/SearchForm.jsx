@@ -1,25 +1,20 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
-export class SearchForm extends Component {
-  state = {
-    searchValue: '',
-  };
+export const SearchForm = ({ onFormSubmit, btnText }) => {
+  const [searchValue, setSearchValue] = useState('');
 
-  inputChange = event => {
-    this.setState({ searchValue: event.target.value });
+  const inputChange = event => {
+    setSearchValue(event.target.value);
   };
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    this.props.onFormSubmit(this.state.searchValue);
+    onFormSubmit(searchValue);
     event.target.reset();
   };
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.inputChange} />
-        <button type="submit"> {this.props.btnText} </button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <input onChange={inputChange} />
+      <button type="submit"> {btnText} </button>
+    </form>
+  );
 }
