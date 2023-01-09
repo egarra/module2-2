@@ -24,7 +24,7 @@ export const AppBar = () => {
             <NavLink to="/trandingMovies">Tranding Movies</NavLink>
           </li>
           <li>
-            <NavLink to="/searchMovies">Search Movies</NavLink>
+            <NavLink to="/movies">Search Movies</NavLink>
           </li>
         </ul>
       </nav>

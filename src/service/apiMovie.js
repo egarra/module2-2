@@ -28,3 +28,9 @@ export const getMovieByQuery = async query => {
   });
   return data;
 };
+
+
+export const getMovieById = async movie_id => {
+  const { data } = await instanceMovie.get(`/movie/${movie_id}`);    
+  return data;
+};
