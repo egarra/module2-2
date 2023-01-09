@@ -19,30 +19,5 @@ export const App = () => {
         <Route path='todos' element={<Todos />}/>
       </Route>
     </Routes>
-    /* <Tabs>
-      <TabList>
-        <Tab>Gallary</Tab>
-        <Tab>Todos</Tab>
-        <Tab>Counter</Tab>
-        <Tab>Friends</Tab>
-        <Tab>Movies</Tab>
-      </TabList>
-
-      <TabPanel>
-        <PhotoGallary />
-      </TabPanel>
-      <TabPanel>
-        <Todos />
-      </TabPanel>
-      <TabPanel>
-        <Counter />
-      </TabPanel>
-      <TabPanel>
-        <Friends />
-      </TabPanel>
-      <TabPanel>
-        <Movies />
-      </TabPanel>
-    </Tabs> */
   );
 };
