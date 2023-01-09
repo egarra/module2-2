@@ -7,6 +7,7 @@ import { TrandingMovies } from 'pages/TrandingMovies/TrandingMovies';
 import { SearchMovies } from 'pages/SearchMovies/SearchMovies';
 import { Home } from 'pages/Home/Home';
 import { AppBar } from './AppBar/AppBar';
+import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Routes, Route } from 'react-router-dom';
 
 export const App = () => {
@@ -19,7 +20,8 @@ export const App = () => {
         <Route path="counter" element={<Counter />} />
         <Route path="friends" element={<Friends />} />
         <Route path="trandingMovies" element={<TrandingMovies />} />
-        <Route path="searchMovies" element={<SearchMovies />} />
+        <Route path="movies" element={<SearchMovies />} />
+        <Route path="movies/:idMovie" element={<MovieDetails />} />
       </Route>
     </Routes>
   );
