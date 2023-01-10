@@ -1,27 +1,43 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'service/apiMovie';
 import { MovieList } from 'components/MovieList/MovieList';
-import { SearchForm } from 'components/SearchForm/SearchForm';
 import { Clock } from 'components/Clock/Clock';
 
 export const SearchMovies = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const movieName = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (!query) return;
-    getMovieByQuery(query).then(({ results }) => {
+    if (!movieName) return;
+
+    setSearchQuery(movieName);
+    getMovieByQuery(movieName).then(({ results }) => {
       setMovies(results);
     });
-  }, [query]);
+  }, [movieName]);
 
-  const onFormSubmit = query => {
-    setQuery(query);
+  const onFormSubmit = e => {
+    e.preventDefault();
+    setSearchParams({ query: searchQuery });
   };
+
   return (
     <>
       <Clock />
-      <SearchForm onFormSubmit={onFormSubmit} btnText="Search" />
+      <form onSubmit={onFormSubmit}>
+        <input
+          name="name"
+          type="text"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
       <MovieList movies={movies} />
     </>
   );
