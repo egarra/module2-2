@@ -1,5 +1,4 @@
-import { nanoid } from 'nanoid';
-import { SearchForm } from 'components/SearchForm/SearchForm';
+import { TodosForm } from 'components/TodosForm/TodosForm';
 import { ToDoList } from 'components/ToDoList/ToDoList';
 import { Filter } from 'components/Filter/Filter';
 import { useState } from 'react';
@@ -10,18 +9,6 @@ export const Todos = () => {
 
   const [filter, setFilter] = useState('');
 
-  const onFormSubmit = text => {
-    const isAtList = todos.find(todo => todo.text === text);
-    if (isAtList) {
-      alert('already in list');
-      return;
-    }
-    const todo = {
-      text,
-      id: nanoid(),
-    };
-    setTodos(prevState => [...prevState, todo]);
-  };
   const deleteToDo = id => {
     setTodos(prevState => prevState.filter(todo => todo.id !== id));
   };
@@ -33,11 +20,10 @@ export const Todos = () => {
   };
   return (
     <>
-      <SearchForm onFormSubmit={onFormSubmit} btnText="Create" />
+      <TodosForm />
       <p>Enter your search value</p>
       <Filter onInputChange={onInputChange} />
       <ToDoList data={filteredToDos()} deleteToDo={deleteToDo} />
     </>
   );
 };
-
