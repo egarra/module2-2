@@ -25,7 +25,7 @@ export const TodosForm = () => {
     };
     const action = addTodo(todo);
     console.log('action', action);
-    // dispatch(addTodo(todo));
+    dispatch(action);
     event.target.reset();
   };
   return (
