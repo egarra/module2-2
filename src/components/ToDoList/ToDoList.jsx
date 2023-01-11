@@ -1,9 +1,15 @@
+import { useSelector } from 'react-redux';
+
 export const ToDoList = ({ data, deleteToDo }) => {
+  const todos = useSelector(state => state.todos);
   return (
     <ul>
-      {data.map(({ text, id }) => (
-        <li key={id}>{text}
-          <button type="button" onClick={() => deleteToDo(id)}>delete</button>
+      {todos.map(({ text, id }) => (
+        <li key={id}>
+          {text}
+          <button type="button" onClick={() => deleteToDo(id)}>
+            delete
+          </button>
         </li>
       ))}
     </ul>

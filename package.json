@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://egarra.github.io/module2-2/",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -11,10 +12,12 @@
     "nanoid": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.7",
     "react-tabs": "^6.0.0",
+    "redux": "^4.2.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.3"
   },
