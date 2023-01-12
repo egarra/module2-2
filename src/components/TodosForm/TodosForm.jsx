@@ -24,7 +24,6 @@ export const TodosForm = () => {
       id: nanoid(),
     };
     const action = addTodo(todo);
-    console.log('action', action);
     dispatch(action);
     event.target.reset();
   };
