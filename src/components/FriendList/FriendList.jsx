@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux';
 import css from './FriendList.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteFriend } from 'redux/friendsSlice';
 
-export const FriendList = ({ friends, deleteFriend }) => {
+export const FriendList = () => {
+  const dispatch = useDispatch();
+  const friends = useSelector(state => state.friends);
   return (
     <ul>
       {friends.map(({ name, email, phone, online, id }) => {
@@ -20,7 +25,13 @@ export const FriendList = ({ friends, deleteFriend }) => {
                 display: 'block',
               }}
             ></span>
-            <button type="button" onClick={() => deleteFriend(id)}>
+            <button
+              type="button"
+              onClick={() => {
+                const action = deleteFriend(id);
+                dispatch(action);
+              }}
+            >
               Delete
             </button>
           </li>
