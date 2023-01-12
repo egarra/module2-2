@@ -5,7 +5,7 @@ import { deleteFriend } from 'redux/friendsSlice';
 
 export const FriendList = () => {
   const dispatch = useDispatch();
-  const friends = useSelector(state => state.friends);
+  const friends = useSelector(state => state.friends.items);
   return (
     <ul>
       {friends.map(({ name, email, phone, online, id }) => {

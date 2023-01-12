@@ -5,7 +5,7 @@ import { addTodo } from 'redux/todosSlice';
 
 export const TodosForm = () => {
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos);
+  const todos = useSelector(state => state.todos.items);
 
   const [searchValue, setSearchValue] = useState('');
 

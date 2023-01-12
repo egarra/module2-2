@@ -3,7 +3,8 @@ import { deleteTodo } from 'redux/todosSlice';
 import { useDispatch } from 'react-redux';
 
 export const ToDoList = () => {
-  const todos = useSelector(state => state.todos);
+  const todos = useSelector(state => state.todos.items);
+  console.log(todos)
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
   const visibleTodos = todos.filter(todo =>
