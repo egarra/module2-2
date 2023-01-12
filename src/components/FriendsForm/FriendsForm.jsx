@@ -1,30 +1,9 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFriend } from 'redux/friendsSlice';
 export const FriendsForm = ({ onFormSubmit }) => {
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [phone, setPhone] = useState('');
-  // const [online, setOnline] = useState(false);
-  // const inputChange = event => {
-  //   const { name, value, checked } = event.target;
-  //   console.log(name);
-  //   switch (name) {
-  //     case 'name':
-  //       setName(value);
-  //       break;
-  //     case 'email':
-  //       setEmail(value);
-  //       break;
-  //     case 'phone':
-  //       setPhone(value);
-  //       break;
-  //     case 'online':
-  //       setOnline(value === 'on' ? checked : value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   const inputChange = event => {
     const { name, value, checked } = event.target;
@@ -35,7 +14,8 @@ export const FriendsForm = ({ onFormSubmit }) => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    onFormSubmit(userData);
+    const action = addFriend(userData);
+    dispatch(action);
     event.target.reset();
   };
 
@@ -52,36 +32,3 @@ export const FriendsForm = ({ onFormSubmit }) => {
     </form>
   );
 };
-// export class FriendsForm extends Component {
-//   state = {
-//     name: '',
-//     email: '',
-//     phone: '',
-//     online: false,
-//   };
-
-//   inputChange = event => {
-//     const { name, value, checked } = event.target;
-//     this.setState({ [name]: value === 'on' ? checked : value });
-//   };
-//   handleSubmit = event => {
-//     event.preventDefault();
-//     this.props.onFormSubmit(this.state);
-//     event.target.reset();
-//   };
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <input name="name" placeholder="Name" onChange={this.inputChange} />
-//         <input name="email" placeholder="Email" onChange={this.inputChange} />
-//         <input name="phone" placeholder="Phone" onChange={this.inputChange} />
-//         <label>
-//           IsOnline
-//           <input name="online" type="checkbox" onChange={this.inputChange} />
-//         </label>
-//         <button type="submit"> Save </button>
-//       </form>
-//     );
-//   }
-// }
