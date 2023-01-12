@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const friendsInitialState = [];
+const friendsInitialState = {items: []};
 
 const friendsSlice = createSlice({
   name: 'friends',
   initialState: friendsInitialState,
   reducers: {
     addFriend(state, { payload }) {
-      return [...state, payload];
+      state.items = [...state.items, payload];
     },
     deleteFriend(state, { payload }) {
-      return state.filter(friends => friends.id !== payload);
+      state.items = state.items.filter(friends => friends.id !== payload);
     },
   },
 });
