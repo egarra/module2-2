@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTodos } from './operations'
+import { fetchTodos, addTodo } from './operations';
 
 // const tasksInitialState = [];
 const todosSlice = createSlice({
@@ -17,21 +17,25 @@ const todosSlice = createSlice({
     [fetchTodos.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.error = null;
-      state.items = payload;
+      state.items = [...payload].reverse();
     },
     [fetchTodos.rejected](state, { payload }) {
       state.isLoading = false;
       state.error = payload;
     },
+    [addTodo.pending](state) {
+      state.isLoading = true;
+    },
+    [addTodo.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = [payload, ...state.items];
+    },
+    [addTodo.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
-  // reducers: {
-  //   addTodo(state, { payload }) {
-  //     state.items = [...state.items, payload];
-  //   },
-  //   deleteTodo(state, { payload }) {
-  //     state.items = state.items.filter(todo => todo.id !== payload);
-  //   },
-  // },
 });
 
 export const todosReducer = todosSlice.reducer;
