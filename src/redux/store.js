@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { todosReducer } from './todosSlice';
+import { todosReducer } from './todos/todosSlice';
 import { filterReducer } from './filterSlice';
 import { friendsReducer } from './friendsSlice';
 import {
@@ -42,7 +42,7 @@ const friendsPersistReducer = persistReducer(friendsPersistConfig, friendsReduce
 
 export const store = configureStore({
   reducer: {
-    todos: todosPersistReducer,
+    todos: todosReducer,
     friends: friendsPersistReducer,
     filter: filterReducer
   },

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { deleteTodo } from 'redux/todosSlice';
+// import { deleteTodo } from 'redux/todos/todosSlice';
 import { useDispatch } from 'react-redux';
 
 export const ToDoList = () => {
   const todos = useSelector(state => state.todos.items);
-  console.log(todos)
+  console.log(todos);
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
   const visibleTodos = todos.filter(todo =>
@@ -18,8 +18,8 @@ export const ToDoList = () => {
           <button
             type="button"
             onClick={() => {
-              const action = deleteTodo(id);
-              dispatch(action);
+              // const action = deleteTodo(id);
+              // dispatch(action);
             }}
           >
             delete
