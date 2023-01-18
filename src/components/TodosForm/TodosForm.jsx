@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addTodo } from 'redux/todosSlice';
+// import { addTodo } from 'redux/todos/todosSlice';
 
 export const TodosForm = () => {
   const dispatch = useDispatch();
@@ -23,8 +23,8 @@ export const TodosForm = () => {
       text: searchValue,
       id: nanoid(),
     };
-    const action = addTodo(todo);
-    dispatch(action);
+    // const action = addTodo(todo);
+    // dispatch(action);
     event.target.reset();
   };
   return (

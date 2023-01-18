@@ -1,8 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTodos } from 'redux/todos/operations';
 import { TodosForm } from 'components/TodosForm/TodosForm';
 import { ToDoList } from 'components/ToDoList/ToDoList';
 import { Filter } from 'components/Filter/Filter';
 
 export const Todos = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
   return (
     <>
       <TodosForm />
