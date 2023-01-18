@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from 'redux/todos/operations';
+import { getTodoItems } from 'redux/todos/selectors';
 
 export const TodosForm = () => {
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos.items);
+  const todos = useSelector(getTodoItems);
 
   const [searchValue, setSearchValue] = useState('');
 

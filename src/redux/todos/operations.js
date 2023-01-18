@@ -28,3 +28,15 @@ export const addTodo = createAsyncThunk(
     }
   }
 );
+
+export const deleteTodo = createAsyncThunk(
+  'todos/deleteTodo',
+  async (id, thunkAPI) => {
+    try {
+      const response = await instanceTodos.delete(`/todos/${id}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

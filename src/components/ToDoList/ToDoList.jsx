@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux';
-// import { deleteTodo } from 'redux/todos/todosSlice';
+import { deleteTodo } from 'redux/todos/operations';
 import { useDispatch } from 'react-redux';
+import { selectVisibleTodos } from 'redux/todos/selectors';
 
 export const ToDoList = () => {
-  const todos = useSelector(state => state.todos.items);
-  console.log(todos);
-  const filter = useSelector(state => state.filter);
+  const visibleTodos = useSelector(selectVisibleTodos);
+
   const dispatch = useDispatch();
-  const visibleTodos = todos.filter(todo =>
-    todo.text.toLowerCase().includes(filter.toLowerCase())
-  );
+
   return (
     <ul>
       {visibleTodos.map(({ text, id }) => (
@@ -18,8 +16,8 @@ export const ToDoList = () => {
           <button
             type="button"
             onClick={() => {
-              // const action = deleteTodo(id);
-              // dispatch(action);
+              const action = deleteTodo(id);
+              dispatch(action);
             }}
           >
             delete
