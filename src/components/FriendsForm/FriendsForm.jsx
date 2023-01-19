@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addFriend } from 'redux/friendsSlice';
 export const FriendsForm = ({ onFormSubmit }) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
@@ -14,8 +13,8 @@ export const FriendsForm = ({ onFormSubmit }) => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    const action = addFriend(userData);
-    dispatch(action);
+    // const action = addFriend(userData);
+    // dispatch(action);
     event.target.reset();
   };
 
