@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import css from './FriendList.module.css';
 import { useDispatch } from 'react-redux';
+import { deleteFriends } from 'redux/friends/operations';
 
 export const FriendList = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,8 @@ export const FriendList = () => {
             <button
               type="button"
               onClick={() => {
-                // const action = deleteFriend(id);
-                // dispatch(action);
+                const action = deleteFriends(id);
+                dispatch(action);
               }}
             >
               Delete

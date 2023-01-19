@@ -16,3 +16,15 @@ export const fetchFriends = createAsyncThunk(
     }
   }
 );
+
+export const deleteFriends = createAsyncThunk(
+  'friends/deleteFriend',
+  async (id, thunkAPI) => {
+    try {
+      const response = await instanceFriends.delete(`/friends/${id}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
