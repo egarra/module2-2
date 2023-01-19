@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { todosReducer } from './todos/todosSlice';
 import { filterReducer } from './filterSlice';
-import { friendsReducer } from './friendsSlice';
+import { friendsReducer } from './friends/friendsSlice';
 import {
-  persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -12,19 +11,19 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 
-const todosPersistConfig = {
-  key: 'todos',
-  storage: storage,
-};
+// const todosPersistConfig = {
+//   key: 'todos',
+//   storage: storage,
+// };
 
-const friendsPersistConfig = {
-  key: 'friends',
-  storage: storage,
-};
-const todosPersistReducer = persistReducer(todosPersistConfig, todosReducer);
-const friendsPersistReducer = persistReducer(friendsPersistConfig, friendsReducer);
+// const friendsPersistConfig = {
+//   key: 'friends',
+//   storage: storage,
+// };
+// const todosPersistReducer = persistReducer(todosPersistConfig, todosReducer);
+// const friendsPersistReducer = persistReducer(friendsPersistConfig, friendsReducer);
 
 /* const rootReducer = combineReducers({
   todos: todosReducer,
@@ -43,7 +42,6 @@ const friendsPersistReducer = persistReducer(friendsPersistConfig, friendsReduce
 export const store = configureStore({
   reducer: {
     todos: todosReducer,
-    friends: friendsPersistReducer,
     filter: filterReducer
   },
   middleware: (getDefaultMiddleware) =>
@@ -54,4 +52,4 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
