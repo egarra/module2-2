@@ -1,19 +1,19 @@
-// import { useDispatch } from 'react-redux';
-// import { logIn } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { fetchLogin } from 'redux/auth/operations';
 
 export const LoginForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
-    // e.preventDefault();
-    // const form = e.currentTarget;
-    // dispatch(
-    //   logIn({
-    //     email: form.elements.email.value,
-    //     password: form.elements.password.value,
-    //   })
-    // );
-    // form.reset();
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      fetchLogin({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
 
   return (

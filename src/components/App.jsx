@@ -11,8 +11,17 @@ import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Routes, Route } from 'react-router-dom';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
+import { refreshUser } from 'redux/auth/operations';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<AppBar />}>
