@@ -9,6 +9,8 @@ import { Home } from 'pages/Home/Home';
 import { AppBar } from './AppBar/AppBar';
 import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Routes, Route } from 'react-router-dom';
+import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
 
 export const App = () => {
   return (
@@ -16,6 +18,8 @@ export const App = () => {
       <Route path="/" element={<AppBar />}>
         <Route index element={<Home />} />
         <Route path="gallery" element={<Gallery />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="todos" element={<Todos />} />
         <Route path="counter" element={<Counter />} />
         <Route path="friends" element={<Friends />} />
