@@ -1,39 +1,14 @@
 import { Outlet, NavLink } from 'react-router-dom';
+import { isLoggined } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { NavMenu } from 'components/NavMenu/NavMenu';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const AppBar = () => {
+  const userLogIn = useSelector(isLoggined);
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/gallery">Gallery</NavLink>
-          </li>
-          <li>
-            <NavLink to="/todos">Todos</NavLink>
-          </li>
-          <li>
-            <NavLink to="/counter">Counter</NavLink>
-          </li>
-          <li>
-            <NavLink to="/friends">Friends</NavLink>
-          </li>
-          <li>
-            <NavLink to="/trandingMovies">Tranding Movies</NavLink>
-          </li>
-          <li>
-            <NavLink to="/movies">Search Movies</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/register">Register</NavLink>
-          </li>
-        </ul>
-      </nav>
+      <nav>{userLogIn ? <UserMenu /> : <NavMenu />}</nav>
       <Outlet />
     </>
   );

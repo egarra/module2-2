@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchRegister, refreshUser, fetchLogin } from './operations';
+import {
+  fetchRegister,
+  refreshUser,
+  fetchLogin,
+  fetchLogOut,
+} from './operations';
 
 const initialState = {
   token: null,
@@ -30,5 +35,13 @@ export const authSlice = createSlice({
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggined = true;
+      })
+      .addCase(fetchLogOut.fulfilled, state => {
+        state.user = {
+          name: null,
+          email: null,
+        };
+        state.token = null;
+        state.isLoggined = false;
       }),
 });

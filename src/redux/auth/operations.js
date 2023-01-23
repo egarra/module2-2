@@ -60,3 +60,15 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const fetchLogOut = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      await instanceRegister.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
