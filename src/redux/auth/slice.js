@@ -9,6 +9,7 @@ const initialState = {
   },
   isLoggined: false,
   isLoading: false,
+  isRefreshing: false,
 };
 
 export const authSlice = createSlice({
@@ -19,12 +20,15 @@ export const authSlice = createSlice({
       .addCase(fetchRegister.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
+        state.isLoggined = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
+        state.isLoggined = true;
       })
       .addCase(fetchLogin.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
+        state.isLoggined = true;
       }),
 });
